@@ -1,14 +1,11 @@
-# CleanCoal Kelvin Ng & David Xiedeng
+# RoastedDuck Kelvin Ng & Tanzim Elahi
 # SoftDev1 pd1
-# K12 
-# 2019-10-02
+# K12 -- Echo Echo Echo
+# 2019-09-26  
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
-
-user = 'cleancoal'
-pswd = 'co2'
 
 @app.route("/")
 def renderTemp():
@@ -16,13 +13,11 @@ def renderTemp():
 
 @app.route("/auth")
 def response():
-	if request.args['username'] == user and request.args['password'] == pswd:
-		return render_template("response.html",
-                            	username = request.args['username'],
-								password = request.args['password'],
-                            	method = request.method)
-	else:
-		return redirect("static/error.html")
+    return render_template("response.html",
+                            username = request.args['username'],
+                            method = request.method)
+ 
+
 
 if __name__ == "__main__":
     app.debug = True
