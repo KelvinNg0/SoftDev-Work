@@ -1,33 +1,52 @@
-# CleanCoal Kelvin Ng & David Xiedeng
+# Team CleanCoal Kelvin Ng & David Xiedeng
 # SoftDev1 pd1
-# K12 
+# K#15 - Do I Know You?
 # 2019-10-02
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 
 app = Flask(__name__)
 
 user = 'cleancoal'
 pswd = 'co2'
+app.secret_key = 'YEET'
 
 @app.route("/")
 def renderTemp():
-	#print(request.cookies.get("username"))    
+	print(session)
+	if session['username'] == user:
+		return render_template("response.html",
+                            	username = session['username'])
 	return render_template('index.html')
-
 
 @app.route("/auth")
 def response():
 	if request.args['username'] == user and request.args['password'] == pswd:
+		session['username'] = request.args['username']
 		return render_template("response.html",
                             	username = request.args['username'])
-	else:
-		return redirect("static/error.html")
+	if request.args['username'] != user and request.args['password'] == pswd:
+		return redirect("/wrongUser")
+	if request.args['username'] == user and request.args['password'] != pswd:
+		return redirect("/wrongPswd")
+	return redirect("/allWrong")
 
-@app.route("/out")
+@app.route("/wrongUser")
+def error0():
+	return render_template('error.html', error = "Invalid Username")
+
+@app.route("/wrongPswd")
+def error1():
+	return render_template('error.html', error = "Invalid Password")
+
+@app.route("/allWrong")
+def error2():
+	return render_template('error.html', error = "Invalid Username and Password")
+
+@app.route("/exit")
 def logout():
-	return redirect("/")
-		
+	session.clear()
+	return render_template('index.html')
 
 if __name__ == "__main__":
     app.debug = True
