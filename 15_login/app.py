@@ -12,17 +12,22 @@ pswd = 'co2'
 
 @app.route("/")
 def renderTemp():
-    return render_template('index.html')
+	#print(request.cookies.get("username"))    
+	return render_template('index.html')
+
 
 @app.route("/auth")
 def response():
 	if request.args['username'] == user and request.args['password'] == pswd:
 		return render_template("response.html",
-                            	username = request.args['username'],
-								password = request.args['password'],
-                            	method = request.method)
+                            	username = request.args['username'])
 	else:
 		return redirect("static/error.html")
+
+@app.route("/out")
+def logout():
+	return redirect("/")
+		
 
 if __name__ == "__main__":
     app.debug = True
