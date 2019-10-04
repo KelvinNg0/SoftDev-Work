@@ -22,6 +22,7 @@ def renderTemp():
 def response():
 	if request.args['username'] == user and request.args['password'] == pswd:
 		session['username'] = request.args['username']
+		flash("Hello " + session['username'] + "! You are logged in.")
 		return render_template("response.html",
                             	username = request.args['username'])
 	if request.args['username'] != user and request.args['password'] == pswd:
