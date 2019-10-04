@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <h3>Team CleanCoal Kelvin Ng & David Xiedeng</h3>
-        Error: {{ error }}
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block body %}
+Error: {{ error }}
+<form action = "/retry">		
+	<input type = "submit" value="retry"><br>
+</form>
+{% endblock %}

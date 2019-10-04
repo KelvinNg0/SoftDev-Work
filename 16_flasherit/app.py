@@ -3,7 +3,7 @@
 # K#16 - Oh yes, perhaps I do…  
 # 2019-10-03
 
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 
 app = Flask(__name__)
 
@@ -13,7 +13,7 @@ app.secret_key = 'YEET'
 
 @app.route("/")
 def renderTemp():
-	if session.get('username') == user:
+	if "username" in session:
 		return render_template("response.html",
                             	username = session['username'])
 	return render_template('index.html')
@@ -45,6 +45,10 @@ def error2():
 @app.route("/exit")
 def logout():
 	session.pop('username')
+	return render_template('index.html')
+
+@app.route("/retry")
+def retry():
 	return render_template('index.html')
 
 if __name__ == "__main__":
