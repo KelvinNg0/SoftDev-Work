@@ -1,7 +1,7 @@
 # Team CleanCoal Kelvin Ng & David Xiedeng
 # SoftDev1 pd1
-# K#15 - Do I Know You?
-# 2019-10-02
+# K#16 - Oh yes, perhaps I do…  
+# 2019-10-03
 
 from flask import Flask, render_template, request, redirect, session
 
