@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block body %}
-Hello {{ username }}!<br><br>
+{% for message in get_flashed_messages() %}
+{{ message }}<br><br>
+{% endfor %}
 <form action = "/exit">		
 	<input type = "submit" value="Logout"><br>
 </form>

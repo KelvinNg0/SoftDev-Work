@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block body %}
-Error: {{ error }}
+{% for message in get_flashed_messages() %}
+{{ message }}<br><br>
+{% endfor %}
 <form action = "/retry">		
-	<input type = "submit" value="retry"><br>
+	<input type = "submit" value="Retry"><br>
 </form>
 {% endblock %}

@@ -4,16 +4,18 @@
 # 2019-10-03
 
 from flask import Flask, render_template, request, redirect, session, flash
+import os
 
 app = Flask(__name__)
 
 user = 'cleancoal'
 pswd = 'co2'
-app.secret_key = 'YEET'
+app.secret_key = os.urandom(32)
 
 @app.route("/")
 def renderTemp():
 	if "username" in session:
+		flash("You are already logged in!")
 		return render_template("response.html",
                             	username = session['username'])
 	return render_template('index.html')
@@ -22,9 +24,8 @@ def renderTemp():
 def response():
 	if request.args['username'] == user and request.args['password'] == pswd:
 		session['username'] = request.args['username']
-		flash("Hello " + session['username'] + "! You are logged in.")
-		return render_template("response.html",
-                            	username = request.args['username'])
+		flash("Hello " + session['username'] + "! You have successfully logged in.")
+		return render_template("response.html")
 	if request.args['username'] != user and request.args['password'] == pswd:
 		return redirect("/wrongUser")
 	if request.args['username'] == user and request.args['password'] != pswd:
@@ -33,15 +34,18 @@ def response():
 
 @app.route("/wrongUser")
 def error0():
-	return render_template('error.html', error = "Invalid Username")
+	flash("Invalid Username")
+	return render_template('error.html')
 
 @app.route("/wrongPswd")
 def error1():
-	return render_template('error.html', error = "Invalid Password")
+	flash("Invalid Password")
+	return render_template('error.html')
 
 @app.route("/allWrong")
 def error2():
-	return render_template('error.html', error = "Invalid Username and Password")
+	flash("Invalid Username and Password")
+	return render_template('error.html')
 
 @app.route("/exit")
 def logout():
