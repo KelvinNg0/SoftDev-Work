@@ -30,22 +30,22 @@ def response():
 		return redirect("/wrongUser")	# if username is wrong and password is correct, user is redicreted to error page
 	if request.args['username'] == user and request.args['password'] != pswd:
 		return redirect("/wrongPswd")	# if username is correct and password is wrong, user is redicreted to error page
-	return redirect("/allWrong")	#if both username and password is wrong, user is redicreted to error page
+	return redirect("/allWrong")	# if both username and password is wrong, user is redicreted to error page
 
 @app.route("/wrongUser")
 def error0():
 	flash("Invalid Username")	# flashes error message
-	return render_template('error.html')	#redirects to error page
+	return render_template('error.html')	# redirects to error page
 
 @app.route("/wrongPswd")
 def error1():
 	flash("Invalid Password")	# flashes error message
-	return render_template('error.html')	#redirects to error page
+	return render_template('error.html')	# redirects to error page
 
 @app.route("/allWrong")
 def error2():
 	flash("Invalid Username and Password")		# flashes error message
-	return render_template('error.html')	#redirects to error page
+	return render_template('error.html')	# redirects to error page
 
 @app.route("/exit")
 def logout():
