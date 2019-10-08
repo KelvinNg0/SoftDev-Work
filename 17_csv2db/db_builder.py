@@ -14,16 +14,26 @@ c = db.cursor()               #facilitate db ops
 
 #==========================================================
 
-# < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
+c.execute("CREATE TABLE IF NOT EXISTS courses(code STRING, mark INTEGER, id INTEGER)")
+c.execute("DELETE FROM courses")
 
-command = "CREATE TABLE courses(code STRING, mark INTEGER, id INTEGER)"
-c.execute(command)
-
-with open('courses.csv', 'r') as csvCourse:			#remove the header
-	readCourse = csv.DictReader('csvCourse')
+with open('courses.csv', 'r') as csvCourse:
+	readCourse = csv.DictReader(csvCourse)
 	for row in readCourse:
-		command = ""
+		c.execute("INSERT INTO courses(code, mark, id) VALUES (' "+ row['code'] +" ' , "+ row['mark'] +", "+ row['id'] +") ")
 
+
+
+c.execute("CREATE TABLE IF NOT EXISTS students(name STRING, age INTEGER, id INTEGER)")
+c.execute("DELETE FROM students")
+
+with open('students.csv', 'r') as csvStudent:
+	readStudent = csv.DictReader(csvStudent)
+	for row in readStudent:
+		c.execute("INSERT INTO students(name, age, id) VALUES (' "+ row['name'] +" ' , "+ row['age'] +", "+ row['id'] +") ")
+
+#c.execute("SELECT * FROM students;")
+#print(c.fetchall())
 #==========================================================
 
 db.commit() #save changes
