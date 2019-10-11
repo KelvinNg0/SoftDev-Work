@@ -39,24 +39,24 @@ c.execute("DELETE FROM stu_avg")
 
 
 c.execute("SELECT name, students.id, mark FROM students, courses WHERE students.id = courses.id")
-rows = c.fetchall()
-stu = rows[0][0]
-stuID = rows[0][1]
+data = c.fetchall()
+name = data[0][0]
+stuID = data[0][1]
 avg = 0
 count = 0
-print(rows)
-for row in rows:
-	if stu == row[0]:
+print(data)
+for row in data:
+	if name == row[0]:
 		count += 1
 		avg += row[2]
 	else:
 		avg /= count
-		print(stu, stuID, avg)
+		print(name, stuID, avg)
 		c.execute("INSERT INTO stu_avg(id, avg) VALUES (' "+ str(stuID) +" ', " + str(avg) +")")
 		count = 1
-		avg = row[2]
-		stu = row[0]
+		name = row[0]
 		stuID = row[1]
+		avg = row[2]
 
 c.execute("SELECT * FROM stu_avg")
 print(c.fetchall())
