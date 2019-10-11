@@ -1,7 +1,7 @@
-#Team 5head Kelvin Ng
+#Team omegalul Kelvin Ng & David Xiedeng
 #SoftDev1 pd1
-#K17 -- No Trouble
-#2019-10-7
+#K18 -- No Trouble
+#2019-10-10
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitate CSV I/O
@@ -33,8 +33,9 @@ with open('students.csv', 'r') as csvStudent:
 		c.execute("INSERT INTO students(name, age, id) VALUES (' "+ row['name'] +" ' , "+ row['age'] +", "+ row['id'] +") ")
 		#for every row in readStudent, insert the values of 'name', 'age', and 'id' into the students table and into their respective categories
 
-#c.execute("SELECT * FROM students;")
-#print(c.fetchall())
+c.execute("SELECT name, students.id, mark FROM students, courses WHERE students.id = courses.id")
+print(c.fetchall())
+
 #==========================================================
 
 db.commit() #save changes
