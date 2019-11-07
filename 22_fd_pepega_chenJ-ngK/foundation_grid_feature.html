@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Testing Foundation</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css">
+</head>
+<body>
+	<h1>Foundation Features by pepega</h1>
+	<!-- code here -->
+	<p>
+		Notice what happens when the browser size changes.
+	</p>
+	<br>
+	<p>
+		Basically, Foundation operates on a grid system depending on screen size (large, medium, small).
+	</p>
+	<br>
+	<br>
+	<div class="grid-x">
+		<div class="cell large-6" style="background: lightblue">cell large-6</div>
+		<div class="cell large-4" style="background: lightsalmon">cell large-4</div>
+		<div class="cell large-2" style="background: lightgreen">cell large-2</div>
+	</div>
+	<br>
+	<br>
+	<div class="grid-x">
+		<div class="cell medium-6" style="background: lightblue">cell medium-6</div>
+		<div class="cell medium-4" style="background: lightsalmon">cell medium-4</div>
+		<div class="cell medium-2" style="background: lightgreen">cell medium-2</div>
+	</div>
+	<br>
+	<br>
+	<div class="grid-x">
+		<div class="cell small-6" style="background: lightblue">cell small-6</div>
+		<div class="cell small-4" style="background: lightsalmon">cell small-4</div>
+		<div class="cell small-2" style="background: lightgreen">cell small-2</div>
+	</div>
+	<br>
+	<br>
+	<div class="grid-x">
+		<div class="cell small-6 large-3" style="background: lightblue">cell small-6 large-3</div>
+		<div class="cell small-6 large-9" style="background: lightsalmon">cell small-6 large-9</div>
+	</div>	
+	<br>
+	<br>
+	<p>
+		Offsets allow users to displace columns and organize the page.
+	</p>
+	<div class="grid-x">
+		<div class="cell small-4" style="background: lightblue">cell small-4</div>
+		<div class="cell small-6 small-offset-2" style="background: lightsalmon">cell small-6 small-offset-2</div>
+	</div>
+	<br>
+	<br>
+	<p>
+		Block grids allow organization and adaptation of, well, blocks. This block grid is made with "small-up-3" and "large-up-5"
+	</p>
+	<div class="grid-x small-up-3 large-up-5">
+		<div class="cell" style="background: lightsalmon">c1</div>
+		<div class="cell" style="background: lightsteelblue">c2</div>
+		<div class="cell" style="background: lightsalmon">c3</div>
+		<div class="cell" style="background: lightsteelblue">c4</div>
+		<div class="cell" style="background: lightsalmon">c5</div>
+		<div class="cell" style="background: lightsteelblue">c6</div>
+		<div class="cell" style="background: lightsalmon">c7</div>
+		<div class="cell" style="background: lightsteelblue">c8</div>
+		<div class="cell" style="background: lightsalmon">c9</div>
+		<div class="cell" style="background: lightsteelblue">c10</div>
+		<div class="cell" style="background: lightsalmon">c11</div>
+	</div>
+	<!-- end code -->
+<!-- include before </body> tag -->
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+	$(document).foundation();
+</script>
+</body>
+</html>
