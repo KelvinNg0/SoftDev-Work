@@ -23,3 +23,6 @@ function gcd(a,b) {
 var randStudent = function (list){
 		return list[Math.floor(Math.random()*list.length)];
 }
+
+var fibH = document.getElementById('1');
+fibH.addEventListener('click', fib(3));
