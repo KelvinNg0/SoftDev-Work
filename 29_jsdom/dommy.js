@@ -52,9 +52,9 @@ var fib = function(n){
 var addFib = function(e) {
   console.log(e);
   var list = document.getElementById("fiblist");
-  var children = list.childNodes;
+  var child = list.childNodes;
   var item = document.createElement("li");
-  item.innerHTML = fib(children.length - 1);
+  item.innerHTML = fib(child.length - 1);
   list.appendChild(item);
 }
 
