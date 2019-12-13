@@ -6,6 +6,7 @@ var changeHeading = function(e) {
 
 var removeItem = function(e) {
   e.target.remove();
+  document.getElementById("h").innerHTML = "Hello World!";
 }
 
 var lis = document.getElementsByTagName("li");
@@ -21,9 +22,9 @@ var addItem = function(e) {
   var item = document.createElement("li");
   item.innerHTML = "WORD";
 	list.appendChild(item);
-  lis[i].addEventListener('mouseover', changeHeading);
-	lis[i].addEventListener('mouseout', function(e) {document.getElementById("h").innerHTML = "Hello World!"});
-  lis[i].addEventListener('click', removeItem);
+  item.addEventListener('mouseover', changeHeading);
+	item.addEventListener('mouseout', function(e) {document.getElementById("h").innerHTML = "Hello World!"});
+  item.addEventListener('click', removeItem);
 }
 
 var button = document.getElementById("b");
